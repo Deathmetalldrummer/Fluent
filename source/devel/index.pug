@@ -1,1 +1,19 @@
 extends ./_html
+block title
+	title Fluent
+block body
+	.wrapper
+		.wrapper__.wrapper__left
+			//- +social()
+		.wrapper__.wrapper__center
+		
+			header.header
+				.header__.header__logo
+					+logo()
+				.header__.header__menu
+					+menu()
+				.header__.header__searchBar
+					+searchBar()
+					
+		.wrapper__.wrapper__right
+			+social()

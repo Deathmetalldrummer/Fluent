@@ -1,1 +1,28 @@
 @import "./_sass.sass"
+
+
+.wrapper
+	padding: 2em
+	background-color: #333
+	display: flex
+	flex-flow: row nowrap
+	&_reverse
+		flex-flow: row-reverse
+.wrapper__
+	flex-shrink: 0
+.wrapper__left
+.wrapper__center
+	flex-grow: 1
+.wrapper__right
+
+.header
+	display: flex
+	flex-flow: row wrap
+	justify-content: space-around
+	background-color: #fff
+	padding: 1em 0
+.header__
+	flex-shrink: 0
+.header__logo
+.header__menu
+.header__searchBar

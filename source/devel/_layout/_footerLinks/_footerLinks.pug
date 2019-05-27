@@ -1,0 +1,7 @@
+mixin footerLinks(header,arrLinks)
+	.footerLinks
+		h3.footerLinks__header= header
+		ul.footerLinks__list
+			each val,indx in arrLinks
+				li.footerLinks__
+					a.footerLinks__link(href="#")= val + ' ' + indx

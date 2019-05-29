@@ -1,0 +1,3 @@
+mixin button(label, obj)
+	- var transparent = (obj && obj.transparent) ? 'button_transparent' : '';
+	button.button(class= transparent)= label

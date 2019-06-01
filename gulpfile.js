@@ -26,34 +26,53 @@ var prefix = {
 var other_files_copy = 'json';
 
 function includeJS(file) {
-	var str = fs.readFileSync(file.path,'utf8');
-	var file_name = path.basename(file.path);
-	var file_path = file.path.replace(file_name,'');
+	var slash_path = file.path.replace(/\\/g, '/');
+	var file_path = slash_path.slice(slash_path.indexOf(devel), slash_path.length);
 
+	var str_from = '//#include("';
+	var str_to = '");';
+
+	file.contents = Buffer.from(result_string(absolute_file(file_path)));
+}
+
+function result_string(string) {
+	var str_from = '//#include("';
+	var str_to = '");';
+	var arr = find_path(string);
+	for (var i = 0; i < arr.length; i++) {
+		string = string.replace(str_from + arr[i] + str_to, absolute_file(arr[i]));
+	}
+
+	if (string.indexOf(str_from) > -1) string = result_string(string);
+
+	return string
+}
+
+function find_path(string) {
 	var str_from = '//#include("';
 	var str_to = '");';
 	var arr = [];
 
-	if (str.indexOf(str_from) !== -1) getPath(str_from,str_to,0);
+	if (string.indexOf(str_from) !== -1) getPath(str_from, str_to, 0);
 
-	function getPath(from,to,search){
-		var substr_from = str.indexOf(from,search) + from.length;
-		var substr_to = str.indexOf(to,substr_from);
-		var res = str.slice(substr_from,substr_to);
+	function getPath(from, to, search) {
+		var substr_from = string.indexOf(from, search) + from.length;
+		var substr_to = string.indexOf(to, substr_from);
+		var res = string.slice(substr_from, substr_to);
 		arr.push(res);
-		if (str.indexOf(from,substr_to) !== -1) {
-			getPath(from,to,substr_to);
+		if (string.indexOf(from, substr_to) !== -1) {
+			getPath(from, to, substr_to);
 		}
 	}
+	return arr;
+}
 
-	for (var i = 0; i < arr.length; i++) {
-		if (arr[i]) {
-			var replace_to = fs.readFileSync(file_path+arr[i],'utf8');
-			str = str.replace(str_from+arr[i]+str_to,replace_to);
-		}
-	}
-
-	file.contents = Buffer.from(str);
+function absolute_file(some_path) {
+	var str_from = '//#include("';
+	var parent_folder = some_path.replace(some_path.slice(some_path.lastIndexOf('/') + 1, some_path.length), '').replace(devel, '');
+	var file_content = fs.readFileSync(some_path, 'utf8');
+	file_content = file_content.replace(/\/\/#include\("/g, str_from + devel + parent_folder);
+	return file_content;
 }
 
 
@@ -62,9 +81,11 @@ function includeJS(file) {
 //                                                              JADE
 ///////////////////////////////////////////////////////////////////////////////////////
 gulp.task('Pug', function() {
-	return gulp.src(['!**/_*/**','!**/_*',devel + '**/*.{pug,jade}'])
+	return gulp.src(['!**/_*/**', '!**/_*', devel + '**/*.{pug,jade}'])
 		.pipe(plumber())
-		.pipe(pug({pretty: true}))
+		.pipe(pug({
+			pretty: true
+		}))
 		.pipe(gulp.dest(build))
 });
 
@@ -75,7 +96,7 @@ gulp.task('Pug', function() {
 ///////////////////////////////////////////////////////////////////////////////////////
 //sass - задача для главного файла стилей
 gulp.task('sass', function() {
-	return gulp.src(['!**/_*/**','!**/_*',devel + '**/*.{sass,scss}'])
+	return gulp.src(['!**/_*/**', '!**/_*', devel + '**/*.{sass,scss}'])
 		.pipe(plumber())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer(prefix))
@@ -101,9 +122,11 @@ gulp.task('Sass', function() {
 //                                                              JAVASCRIPT
 ///////////////////////////////////////////////////////////////////////////////////////
 gulp.task('js', function() {
-	return gulp.src(['!**/_*/**','!**/_*',devel + '**/*.js'])
+	return gulp.src(['!**/_*/**', '!**/_*', devel + '**/*.js'])
 		.pipe(plumber())
-		.on('data',function(file){includeJS(file)})
+		.on('data', function(file) {
+			includeJS(file)
+		})
 		.pipe(gulp.dest(build))
 });
 
@@ -128,35 +151,35 @@ gulp.task('JavaScript', function() {
 ///////////////////////////////////////////////////////////////////////////////////////
 gulp.task('copy:font', function() {
 	return gulp.src(devel + '**/*.{woff,woff2,ttf}')
-	.on('data',function(file){
-		replacePath(file,'_fonts/','font/');
-	})
-	.pipe(gulp.dest(build))
+		.on('data', function(file) {
+			replacePath(file, '_fonts/', 'font/');
+		})
+		.pipe(gulp.dest(build))
 });
 
 gulp.task('copy:img', function() {
 	return gulp.src([devel + '**/_pictures/**/*.{png,jpg,svg}'])
-	.on('data', function(file) {
-		replacePath(file,'_pictures/','pictures/');
-	})
-	.pipe(gulp.dest(build))
+		.on('data', function(file) {
+			replacePath(file, '_pictures/', 'pictures/');
+		})
+		.pipe(gulp.dest(build))
 });
 
 gulp.task('copy:other', function() {
-	return gulp.src(['!**/_*/**','!**/_*',devel + '**/*.' + other_files_copy])
-	.pipe(gulp.dest(build))
+	return gulp.src(['!**/_*/**', '!**/_*', devel + '**/*.' + other_files_copy])
+		.pipe(gulp.dest(build))
 });
 
 gulp.task('copy', function() {
 	runSequence('copy:font', 'copy:img', 'copy:other');
 });
 
-function replacePath(file,str,strTo) {
-	var filePath = file.path.replace(/\\/g,'/');
+function replacePath(file, str, strTo) {
+	var filePath = file.path.replace(/\\/g, '/');
 	var picIndex = filePath.indexOf(str);
 	var develIndex = filePath.indexOf(devel);
-	var fromTo = filePath.slice(develIndex+devel.length,picIndex+str.length);
-	file.path = filePath.replace(fromTo,strTo);
+	var fromTo = filePath.slice(develIndex + devel.length, picIndex + str.length);
+	file.path = filePath.replace(fromTo, strTo);
 }
 
 

@@ -3,28 +3,18 @@ block title
 	title Fluent
 block body
 	.wrapper
-		.wrapper__.wrapper__left
-			//- +social()
-		.wrapper__.wrapper__center
-
-			header.header
-				.header__.header__logo
-					+logo()
-				.header__.header__menu
-					+menu()
-				.header__.header__searchBar
-					+searchBar()
-			.slider__place
-				+slider()
-		.wrapper__.wrapper__right
-			+social()
-	+projects()
-	.infolistANDtestimonial
-		.infolistANDtestimonial__.infolistANDtestimonial__infolist
-			+infolist()
-		.infolistANDtestimonial__.infolistANDtestimonial__testimonial
-			+testimonial()
-	+lightSlider()
-	+pricing()
-	+subscribe()
-	+footer()
+		.wrapper__wrap.section
+			section.section__.section__head
+				+sectionHead()
+			section.section__.section__projects
+				+projects()
+			section.section__.section__infolistANDtestimonial
+				+infolistANDtestimonial()
+			section.section__.section__lightSlider
+				+lightSlider()
+			section.section__.section__pricing
+				+pricing()
+			section.section__.section__subscribe
+				+subscribe()
+			footer.section__.section__footer
+				+footer()

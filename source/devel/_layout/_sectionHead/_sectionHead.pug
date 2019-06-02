@@ -10,7 +10,8 @@ mixin sectionHead()
 					+menu()
 				.header__.header__searchBar
 					+searchBar()
-			.slider__place
-				+slider()
+			.content__place
+				if block
+					block
 		.sectionHead__.sectionHead__right
 			+social()

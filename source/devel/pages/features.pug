@@ -1,0 +1,17 @@
+extends ../_html
+block title
+    title Features
+block body
+    .wrapper
+        .wrapper__wrap.section
+            section.section__.section__head
+                +sectionHead()
+                    +pageHeader('Features', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, veniam.')
+            section.section__.section__features
+                +someCards()
+            section.section__.section__features
+                +coreFeatures()
+            section.section__.section__features
+                +systemRequirements()
+            footer.section__.section__footer
+                +copyright()

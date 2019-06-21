@@ -1,15 +1,18 @@
-mixin sectionHead()
+mixin sectionHead(logo=true, menu=true, searchBar=true)
 	.sectionHead
 		.sectionHead__.sectionHead__left
 			//- +social()
 		.sectionHead__.sectionHead__center
 			header.header
-				.header__.header__logo
-					+logo()
-				.header__.header__menu
-					+menu()
-				.header__.header__searchBar
-					+searchBar()
+				if logo
+					.header__.header__logo
+						+logo()
+				if menu
+					.header__.header__menu
+						+menu()
+				if searchBar
+					.header__.header__searchBar
+						+searchBar()
 			.content__place
 				if block
 					block

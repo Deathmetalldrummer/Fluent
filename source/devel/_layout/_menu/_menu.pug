@@ -1,20 +1,62 @@
-mixin menu()
+mixin menu(homePath, path)
 	ul.menu
 		li.menu__
-			a.menu__link(href="pages/about_us.html") About
+			a.menu__link(href= homePath+"index.html") Home
 		li.menu__
-			a.menu__link(href="pages/404.html") 404
+			a.menu__link(href="#") Features
+			ul.submenu
+				li.submenu__
+					a.submenu__link(href= path+"features.html") Overview
+				li.submenu__
+					a.submenu__link(href= path+"particles.html") Particles
+				li.submenu__
+					a.submenu__link(href= path+"typography.html") Typography
 		li.menu__
-			a.menu__link(href="pages/pricing.html") price
+			a.menu__link(href="#") Pages
+			ul.submenu
+				li.submenu__
+					a.submenu__link(href= path+"about_us.html") About Us
+				li.submenu__
+					a.submenu__link(href= path+"pricing.html") Pricing
+				li.submenu__
+					a.submenu__link(href= path+"portfolio.html") Portfolio
+				li.submenu__
+					a.submenu__link(href= path+"blog.html") Blog
+				li.submenu__
+					a.submenu__link(href= path+"contacts.html") Contact
+				li.submenu__
+					a.submenu__link(href= path+"404.html") Error
+				li.submenu__
+					a.submenu__link(href= path+"coming_soon.html") Coming Soon
 		li.menu__
-			a.menu__link(href="pages/features.html") features
+			a.menu__link(href="#") Layouts
+			ul.submenu
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Full Width
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Left Sidebar
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Right Sidebar
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Two Sidebars
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Sidebars Left
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Sidebars Right
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Rows & Columns
 		li.menu__
-			a.menu__link(href="pages/blog.html") blog
-		li.menu__
-			a.menu__link(href="pages/article.html") article
-		li.menu__
-			a.menu__link(href="pages/contacts.html") contacts
-		li.menu__
-			a.menu__link(href="pages/portfolio.html") portfolio
-		li.menu__
-			a.menu__link(href="pages/particles.html") particles
+			a.menu__link(href="#") Styles
+			ul.submenu
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Preset 1
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Preset 2
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Preset 3
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Preset 4
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Preset 5
+				li.submenu__
+					a.submenu__link(href= path+"../index.html") Preset 6

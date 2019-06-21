@@ -6,6 +6,24 @@
 .menu__
 	display: inline-block
 	vertical-align: middle
+	position: relative
 	&+&
 		margin-left: 1em
+	&:hover .submenu
+		transform: scaleY(1)
+		opacity: 1
 .menu__link
+
+
+.submenu
+	position: absolute
+	top: 100%
+	left: 0
+	background-color: rgba(#ffffff, 0.5)
+	border-radius: 10px
+	transition: opacity 0.3s ease-out
+	opacity: 0
+	transform-origin: top
+	transform: scaleY(0)
+.submenu__
+.submenu__link

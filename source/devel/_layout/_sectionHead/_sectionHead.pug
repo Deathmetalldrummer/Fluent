@@ -9,7 +9,8 @@ mixin sectionHead(logo=true, menu=true, searchBar=true)
 						+logo()
 				if menu
 					.header__.header__menu
-						+menu()
+						block menu
+							+menu("./","./pages/")
 				if searchBar
 					.header__.header__searchBar
 						+searchBar()

@@ -1,13 +1,15 @@
 extends ../_html
 block title
-    title 404
+	title 404
+block menu
+	+menu("../","./")
 block body
-    .wrapper
-        .wrapper__wrap.section
-            section.section__.section__head
-                +sectionHead()
-                    +pageHeader('404', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, veniam.')
-            section.section__.section__content
-                h1 404
-            footer.section__.section__footer
-                +copyright()
+	.wrapper
+		.wrapper__wrap.section
+			section.section__.section__head
+				+sectionHead()
+					+pageHeader('404', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, veniam.')
+			section.section__.section__content
+				h1 404
+			footer.section__.section__footer
+				+copyright()

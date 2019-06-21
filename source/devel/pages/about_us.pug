@@ -1,13 +1,15 @@
 extends ../_html
 block title
-    title About Us
+	title About Us
+block menu
+	+menu("../","./")
 block body
-    .wrapper
-        .wrapper__wrap.section
-            section.section__.section__head
-                +sectionHead()
-                    +pageHeader('About Us', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, veniam.')
-            section.section__.section__about
-                +aboutUs()
-            footer.section__.section__footer
-                +copyright()
+	.wrapper
+		.wrapper__wrap.section
+			section.section__.section__head
+				+sectionHead()
+					+pageHeader('About Us', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, veniam.')
+			section.section__.section__about
+				+aboutUs()
+			footer.section__.section__footer
+				+copyright()

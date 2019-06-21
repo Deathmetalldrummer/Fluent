@@ -1,17 +1,19 @@
 extends ../_html
 block title
-    title Portfolio
+	title Portfolio
+block menu
+	+menu("../","./")
 block body
-    .wrapper
-        .wrapper__wrap.section
-            section.section__.section__head
-                +sectionHead()
-                    +pageHeader('Portfolio', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, veniam.')
-            section.section__.section__portfolioInfo
-                +portfolioInfolist()
-            section.section__.section__portfolioProjects
-                +portfolioProjects()
-            section.section__.section__portfolioImages
-                +portfolioImages()
-            footer.section__.section__footer
-                +copyright()
+	.wrapper
+		.wrapper__wrap.section
+			section.section__.section__head
+				+sectionHead()
+					+pageHeader('Portfolio', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, veniam.')
+			section.section__.section__portfolioInfo
+				+portfolioInfolist()
+			section.section__.section__portfolioProjects
+				+portfolioProjects()
+			section.section__.section__portfolioImages
+				+portfolioImages()
+			footer.section__.section__footer
+				+copyright()

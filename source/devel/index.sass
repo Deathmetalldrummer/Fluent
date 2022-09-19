@@ -6,11 +6,29 @@
 	background: #fff url("./pictures/wrapper_bg_1.jpg") center center no-repeat
 	background-size: cover
 	background-attachment: fixed
+	// .style_1 &
+		background-color: $color_style_1
+		background-image: url("./pictures/wrapper_bg_1.jpg")
+	.style_2 &
+		background-color: $color_style_2
+		background-image: url("./pictures/wrapper_bg_2.jpg")
+	.style_3 &
+		background-color: $color_style_3
+		background-image: url("./pictures/wrapper_bg_3.jpg")
+	.style_4 &
+		background-color: $color_style_4
+		background-image: url("./pictures/wrapper_bg_4.jpg")
+	.style_5 &
+		background-color: $color_style_5
+		background-image: url("./pictures/wrapper_bg_5.jpg")
+	.style_6 &
+		background-color: $color_style_6
+		background-image: url("./pictures/wrapper_bg_6.jpg")
 .wrapper__wrap
 	margin: auto
-	width: 95%
+	width: 90%
 	background-color: #fff
-	border-radius: 10px
+	border-radius: 4px
 	overflow: hidden
 
 .section
@@ -22,3 +40,37 @@
 .section__pricing
 .section__subscribe
 .section__footer
+
+
+
+.stylesControl
+	background-color: #333
+	text-align: center
+	padding: 10px
+.stylesControl__
+	color: orange
+	display: inline-block
+	padding: 5px 10px
+	cursor: pointer
+	border-radius: 3px
+	border: 1px solid transparent
+	transition-duration: 0.3s
+	&+&
+		margin-left: 20px
+	&:hover
+		border-color: orange
+
+
+// color: $color_style_default
+// .style_1 &
+// 	color: $color_style_1
+// .style_2 &
+// 	color: $color_style_2
+// .style_3 &
+// 	color: $color_style_3
+// .style_4 &
+// 	color: $color_style_4
+// .style_5 &
+// 	color: $color_style_5
+// .style_6 &
+// 	color: $color_style_6

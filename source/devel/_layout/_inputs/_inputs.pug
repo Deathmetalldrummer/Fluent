@@ -1,9 +1,9 @@
 mixin input(type='text')
-    .input
-        case type
-            when 'text'
-                input(type='text').input__field.input__field_text
-            when 'email'
-                input(type='email').input__field.input__field_email
-            when 'textarea'
-                input(type='textarea').input__field.input__field_textarea
+	.input
+		case type
+			when 'text'
+				input(type='text').input__field.input__field_text
+			when 'email'
+				input(type='email').input__field.input__field_email
+			when 'textarea'
+				textarea(rows='10').input__field.input__field_textarea

@@ -2,21 +2,28 @@ extends ./_html
 block title
 	title Fluent
 block body
+	.stylesControl
+		span.stylesControl__(data-style="style_1") style 1
+		span.stylesControl__(data-style="style_2") style 2
+		span.stylesControl__(data-style="style_3") style 3
+		span.stylesControl__(data-style="style_4") style 4
+		span.stylesControl__(data-style="style_5") style 5
+		span.stylesControl__(data-style="style_6") style 6
 	.wrapper
 		.wrapper__wrap.section
 			section.section__.section__head
 				+sectionHead()
 					+slider()
-			section.section__.section__projects
-				+projects()
-			section.section__.section__infolistANDtestimonial
-				+infolistANDtestimonial()
-			section.section__.section__lightSlider
-				+lightSlider()
-			section.section__.section__pricing
-				+pricing()
-			section.section__.section__subscribe
-				+subscribe()
-			footer.section__.section__footer
-				+footer()
-				+copyright()
+			//- section.section__.section__projects
+			//- 	+projects()
+			//- section.section__.section__infolistANDtestimonial
+			//- 	+infolistANDtestimonial()
+			//- section.section__.section__lightSlider
+			//- 	+lightSlider()
+			//- section.section__.section__pricing
+			//- 	+pricing()
+			//- section.section__.section__subscribe
+			//- 	+subscribe()
+			//- footer.section__.section__footer
+			//- 	+footer()
+			//- 	+copyright()

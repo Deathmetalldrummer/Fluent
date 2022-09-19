@@ -1,26 +1,23 @@
 mixin contactForm()
-    form.contactForm
-        .contactForm__desc Send an Email. All fields with an * are required.
-        label.contactForm__.contactForm__name
-            .contactForm__inputDesc Name *
-            .contactForm__inputField
-                +input('text')
-        label.contactForm__.contactForm__email
-            .contactForm__inputDesc Email *
-            .contactForm__inputField
-                +input('email')
-        label.contactForm__.contactForm__subject
-            .contactForm__inputDesc Subject *
-            .contactForm__inputField
-                +input('text')
-        label.contactForm__.contactForm__message
-            .contactForm__inputDesc Message *
-            .contactForm__inputField
-                +input('textarea')
-        label.contactForm__.contactForm__check
-            .contactForm__inputField Send Copy to Yourself
-                input(type='checkbox')
-            +button('Send Email ')
-
-
-
+	form.contactForm
+		.contactForm__desc Send an Email. All fields with an * are required.
+		label.contactForm__.contactForm__name
+			.contactForm__inputDesc Name *
+			.contactForm__inputField
+				+input('text')
+		label.contactForm__.contactForm__email
+			.contactForm__inputDesc Email *
+			.contactForm__inputField
+				+input('email')
+		label.contactForm__.contactForm__subject
+			.contactForm__inputDesc Subject *
+			.contactForm__inputField
+				+input('text')
+		label.contactForm__.contactForm__message
+			.contactForm__inputDesc Message *
+			.contactForm__inputField
+				+input('textarea')
+		label.contactForm__.contactForm__check
+			.contactForm__inputField Send Copy to Yourself
+				input(type='checkbox')
+			+button('Send Email ')
